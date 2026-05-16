@@ -9,7 +9,14 @@ function TaskItem({ task, onToggle, onDelete }) {
         onChange={() => onToggle(task.id)}
       />
       <span className="task-text">{task.text}</span>
-      <button className="delete-btn" onClick={() => onDelete(task.id)}>削除</button>
+      <button
+        className="delete-btn"
+        onClick={() => {
+          if (window.confirm(`「${task.text}」を削除しますか？`)) {
+            onDelete(task.id)
+          }
+        }}
+      >削除</button>
     </li>
   )
 }
